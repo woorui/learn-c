@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
 
 
     // 1-12 每行打印一个单词
-    int c, nw, nc, state;
+    int c;
 
     while ((c = getchar()) != '\n')
     {
