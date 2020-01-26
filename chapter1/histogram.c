@@ -45,6 +45,8 @@ int main(int argc, char const *argv[])
             ++nc;
     }
 
+    // 在while循环之内计算，在循环之外print可以打印直方图，而不是回车打印
+    // 对应 array.c中的1-13解
     maxvalue = 0;
     for (i = 1; i < MAXWORD; ++i)
         if (wl[i] > maxvalue)
