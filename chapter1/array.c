@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+#define IN 1
+#define OUT 0
+
 int main(int argc, char const *argv[])
 {
     // int c, i, nwhite, nother;
@@ -37,28 +40,31 @@ int main(int argc, char const *argv[])
     // printf(", white space = %d, other = %d \n", nwhite, nother);
 
     // 1-13 读取输入的单词长度直方图  水平方向
-    int c, i, nc, state;
+    int c, nc, state;
 
-    i = nc = 0;
+    state = OUT;
+    nc = 0;
 
     while ((c = getchar()) != EOF)
     {
-
         if (c == ' ' || c == '\n' || c == '\t')
         {
-            printf("\t");
-            for (i = 0; i < nc; i++)
+            if (state == IN)
             {
-                putchar('*');
+                putchar(':');
+                for (int i = 0; i < nc; i++)
+                    putchar('*');
+                putchar('\n');
             }
-            printf("\n");
+            state = OUT;
             nc = 0;
         }
         else
         {
+            state = IN;
             putchar(c);
+            ++nc;
         }
-        ++nc;
     }
     return 0;
 }
